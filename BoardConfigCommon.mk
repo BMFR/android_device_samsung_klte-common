@@ -25,7 +25,7 @@ TARGET_BOOTLOADER_BOARD_NAME := MSM8974
 # Kernel
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 BOARD_KERNEL_BASE := 0x00000000
-BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3
+BOARD_KERNEL_CMDLINE := console=null androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x37 ehci-hcd.park=3 androidboot.selinux=permissive
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_SEPARATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x02000000 --tags_offset 0x01e00000
@@ -45,14 +45,15 @@ BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(LOCAL_PATH)/bluetooth
 BOARD_BLUETOOTH_USES_HCIATTACH_PROPERTY := false
 BOARD_HAVE_BLUETOOTH_BCM := true
 
+# Camera
+BOARD_USES_LEGACY_MMAP := true
+USE_DEVICE_SPECIFIC_CAMERA := true
+
 # CMHW
 BOARD_HARDWARE_CLASS += hardware/samsung/cmhw
 
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
-
-# NFC
-BOARD_NFC_HAL_SUFFIX := msm8974
 
 # Partitions
 BOARD_FLASH_BLOCK_SIZE := 131072
@@ -61,6 +62,9 @@ TARGET_USERIMAGES_USE_EXT4 := true
 # Power HAL
 TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(LOCAL_PATH)/power/power_ext.c
 TARGET_POWERHAL_VARIANT := qcom
+
+# Radio
+BOARD_RIL_CLASS := ../../../device/samsung/klte-common/ril
 
 # Recovery
 BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/klte-common/recovery/recovery_keys.c
