@@ -42,9 +42,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0
 
-#
-#TN Tweeks
-#
+# TN Tweeks
 PRODUCT_PROPERTY_OVERRIDES += \
     log.tag.launcher_force_rotate=VERBOSE \
     pm.sleep_mode=1 \
